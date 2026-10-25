@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Quiz App</title>
+</head>
+<body>
+<h2>Login to Quiz Application</h2>
+
+<!-- Error and Success Messages -->
+<div th:if="${param.error}" style="color: red;">
+    Invalid username or password.
+</div>
+<div th:if="${param.logout}" style="color: green;">
+    You have been logged out.
+</div>
+<div th:if="${param.registered}" style="color: green;">
+    Registration successful! Please log in.
+</div>
+
+<!-- Login Form -->
+<form th:action="@{/login}" method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required minlength="3" placeholder="Enter username"/>
+    </div>
+    <br/>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required minlength="4" placeholder="Enter password"/>
+    </div>
+    <br/>
+    <button type="submit">Login</button>
+</form>
+
+<p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
+</body>
+</html>

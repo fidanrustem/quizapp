@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Quiz Question</title>
+</head>
+<body>
+    <h2>Add a New Question</h2>
+
+    <form th:action="@{/addQuiz}" th:object="${question}" method="post">
+        <div>
+            <label>Question Text:</label><br/>
+            <textarea th:field="*{questionText}" rows="3" cols="50" required></textarea>
+        </div>
+        <br/>
+
+        <div>
+            <label>Answer Options (Provide 4):</label><br/>
+            <input type="text" name="options" placeholder="Option 1" required/><br/>
+            <input type="text" name="options" placeholder="Option 2" required/><br/>
+            <input type="text" name="options" placeholder="Option 3" required/><br/>
+            <input type="text" name="options" placeholder="Option 4" required/><br/>
+        </div>
+        <br/>
+
+        <div>
+            <label>Correct Answer:</label><br/>
+            <input type="text" th:field="*{correctAnswer}" placeholder="Must exactly match one option" required/>
+        </div>
+        <br/>
+
+        <button type="submit">Save Question</button>
+        <a th:href="@{/home}">Cancel</a>
+    </form>
+</body>
+</html>
